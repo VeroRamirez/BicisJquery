@@ -71,36 +71,26 @@ function validaMail() {
 function validaPassword() {
         var texto = $('#input-password').val();
         if ( texto.trim() == "" ) {
-           if($('#input-password').siblings('span')[0]){
-                $('#input-password').siblings('span')[0].remove();
-            }
+           $('#input-password').parent().find('span').each( function() { $(this).remove(); });
             var span = $('<span class="error" >Campo Vacio</span>');
             $('#input-password').parent().append(span);
         }else if( texto.length<6 ) {
-            if($('#input-password').siblings('span')[0]){
-                $('#input-password').siblings('span')[0].remove();
-            }
+            $('#input-password').parent().find('span').each( function() { $(this).remove(); });
             var span = $('<span class="error" >Password debe tener al menos 5 caracteres</span>');
             $('#input-password').parent().append(span);
         }else{
-            if( $('#input-password').siblings('span')[0] ){
-                $('#input-password').siblings('span')[0].remove();
-            }
+            $('#input-password').parent().find('span').each( function() { $(this).remove(); });
         }
     }
 
 function validaCombo() {
-        if($('select').siblings('span')[0]){
-                $('select').siblings('span')[0].remove();
-            }
-         if($('select option').eq(0).prop('selected')){
+        $('select').parent().find('span').each( function() { $(this).remove(); });
+         if($("select").val()=="0"){
             var span = $('<span class="error" >Elige una opcion valida</span>');
             $('select').parent().append(span);
          }else{
-             if($('select').siblings('span')[0]){
-                $('select').siblings('span')[0].remove();
-            }
-         }
+             $('select').parent().find('span').each( function() { $(this).remove(); });
+        }
     }
 
 
